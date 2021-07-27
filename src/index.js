@@ -6,26 +6,36 @@ const path          = require('path');
 const app           = express();
 const port          = 3000
 
-// set thư mục public / static file
+/**
+ ******* SET FOLDER PUBLIC - STATIC FILE *********************
+ * 
+*/
 app.use(express.static(path.join(__dirname, 'public')));
 
-// http logger
-app.use(morgan('combined'))
+/**
+ ******* HTTP LOGGER DEBUG *********************
+ * 
+*/
+app.use(morgan('combined'));
 
-// template engine
+/**
+ ******* TEMPLATE ENGINE *********************
+ * 
+*/
 app.engine('hbs', handlebars({ 
-    /* config */
     extname: ".hbs"
-}));
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+})); // config extension name
+app.set('view engine', 'hbs'); // view engine use handlebars template
+app.set('views', path.join(__dirname, 'resources/views')); // config view engine
 
-// định nghĩa route
-app.get('/', (req, res) => {
-    res.render('home');
-})
+/**
+ ******* ROUTER *********************
+ * 
+*/
+app.get('/', (req, res) => res.render('home') ); // route home page
+app.get('/news', (req, res) => res.render('news') ); // route news page
 
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`) // gọi port được định nghãi khi khởi chạy
 })
