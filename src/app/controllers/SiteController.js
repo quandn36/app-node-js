@@ -6,7 +6,7 @@ class SiteController {
         .then( (courses) => {
             // do handlebars sửa lỗi bão mật thì dùng cách map để tạo lại 1 mãng mới
             courses = courses.map((course) => course.toObject());
-            res.render('home', { courses:courses })
+            res.render('home', { courses:courses });
         })
         .catch( (error) => next(error));
         

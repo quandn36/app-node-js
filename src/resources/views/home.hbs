@@ -6,9 +6,13 @@
         {{#each courses}}
         <div class="col-3">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                <a href="course/{{this.slug}}"> 
+                    <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">{{this.name}}</h5>
+                    <a href="course/{{this.slug}}" style="text-decoration: none;"> 
+                        <h5 class="card-title">{{this.name}}</h5> 
+                    </a>
                     <p class="card-text">{{this.descriptions}}</p>
                     <a href="#" class="btn btn-primary">Đăng ký</a>
                 </div>
