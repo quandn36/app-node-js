@@ -3,9 +3,9 @@ const router            = express.Router(); // route này là của express
 const siteController    = require('../app/controllers/SiteController'); // use siteController vào để sử dụng
 
 // processing....
-router.use('/news', siteController.news);
-router.use('/search', siteController.search);
-router.use('/', siteController.index);
+router.get('/news', siteController.news);
+router.get('/search', siteController.search);
+router.get('/', siteController.index);
 
 // export router
 module.exports = router;

@@ -1,5 +1,19 @@
 <div class="main">
-    <p class="home">
-        here is home page
-    </p>
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="">Home</a>
+    </nav>
+    <div class="row">
+        {{#each courses}}
+        <div class="col-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">{{this.descriptions}}</p>
+                    <a href="#" class="btn btn-primary">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>  
 </div>

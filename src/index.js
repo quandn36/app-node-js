@@ -4,7 +4,13 @@ const handlebars    = require('express-handlebars');
 const path          = require('path');
 const app           = express();
 const port          = 3000;
-const route         = require('./routes')
+const route         = require('./routes');
+const db            = require('./config/db');
+
+// kết nối với database mongodb
+db.connect();
+
+
 /**
  ******* SET FOLDER PUBLIC - STATIC FILE *********************
  * use là tạo ra 1 cái rule nhưng không phải  là route
@@ -24,16 +30,16 @@ app.use(morgan('combined'));
 */
 app.engine('hbs', handlebars({ extname: ".hbs" })); // config extension name
 app.set('view engine', 'hbs'); // view engine use handlebars template
-app.set('views', path.join(__dirname, 'resources/views')); // config view engine
+app.set('views', path.join(__dirname, 'resources','views')); // config view engine
 
 /**
  ******* ROUTERS INIT *********************
- * 
+ * sử dụng tham số là app
 */
 route(app);
 
 
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`) // gọi port được định nghãi khi khởi chạy
+    console.log(`App listening at http://localhost:${port}`) // gọi port được định nghãi khi khởi chạy
 })
