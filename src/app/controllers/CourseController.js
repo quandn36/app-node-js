@@ -6,7 +6,7 @@ class CourseController {
         Course.findOne({ slug: req.params.slug })
             .then((course) => {
                 course = course ? course.toObject() : course;
-                res.render('course-detail', { course: course });
+                res.render('courses/course-detail', { course: course });
             })
             .catch((err) => next(err));
     }
