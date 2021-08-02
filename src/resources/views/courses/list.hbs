@@ -1,0 +1,33 @@
+<div class="main">
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="/">Home</a>
+        <a class="breadcrumb-item" >Course list</a>
+    </nav>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Desctiptions</th>
+                <th collapse="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                <td scope="row">
+                    <img style="width:40px; height: 40px;" src="{{this.image}}" alt="{{this.name}}">
+                </td>
+                <td>{{this.name}}</td>
+                <td>{{this.descriptions}}</td>
+                <td>
+                    <a href="{{this.slug}}/edit">edit</a>
+                </td>
+                <td>
+                    <a href="">delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

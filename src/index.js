@@ -1,6 +1,7 @@
 const express       = require('express');
 const morgan        = require('morgan');
 const handlebars    = require('express-handlebars');
+const methodOverride = require('method-override')
 const path          = require('path');
 const app           = express();
 const port          = 3000;
@@ -18,6 +19,10 @@ db.connect();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
+
 /**
  ******* HTTP LOGGER DEBUG *********************
  * 
@@ -37,8 +42,6 @@ app.set('views', path.join(__dirname, 'resources','views')); // config view engi
  * sử dụng tham số là app
 */
 route(app);
-
-
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`) // gọi port được định nghãi khi khởi chạy
