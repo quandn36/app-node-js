@@ -3,6 +3,7 @@ const router = express.Router(); // route này là của express
 const courseController = require('../app/controllers/CourseController'); // use siteController vào để sử dụng
 
 // processing....
+router.get('/manager/delete/:course_id', courseController.delete);
 router.get('/manager/list', courseController.list);
 router.get('/manager/:slug/edit', courseController.edit);
 router.put('/update', courseController.update);

@@ -58,12 +58,15 @@ class CourseController {
             descriptions: req.body.course_description,
             image: req.body.course_image,
         })
-        .then((data) => { res.redirect('/') })
-        .catch((err) => next(err));
+            .then((data) => { res.redirect('/') })
+            .catch((err) => next(err));
     }
 
     delete(req, res, next){
-        res.send('delete success');
+        
+        Course.deleteOne({ _id: req.params.course_id })
+            .then((data) => { res.redirect('/course/manager/list') })
+            .catch((err) => next(err));
     }
 }
 
