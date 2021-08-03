@@ -12,13 +12,16 @@ class CourseController {
     }
 
     list(req, res, next){
-        Course.find() 
-        .then( (courses) => {
-            // do handlebars sửa lỗi bão mật thì dùng cách map để tạo lại 1 mãng mới
-            courses = courses.map((course) => course.toObject());
-            res.render('courses/list', { courses:courses });
-        })
-        .catch( (error) => next(error));
+        // nhận vào 1 mảng promise
+        Promise.all( [Course.find({}), Course.countDocumentsDeleted()] )
+            .then(( [courses, countD] ) => {
+                courses = courses.map((course) => course.toObject());  // do handlebars sửa lỗi bão mật thì dùng cách map để tạo lại 1 mãng mới
+                res.render('courses/list', { 
+                    courses: courses,
+                    countD: countD,
+                });
+            })
+            .catch(next);
     }
 
     create(req, res, next){
