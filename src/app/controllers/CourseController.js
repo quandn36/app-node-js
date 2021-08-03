@@ -12,7 +12,7 @@ class CourseController {
     }
 
     list(req, res, next){
-        Course.find({}) 
+        Course.find() 
         .then( (courses) => {
             // do handlebars sửa lỗi bão mật thì dùng cách map để tạo lại 1 mãng mới
             courses = courses.map((course) => course.toObject());
@@ -63,11 +63,11 @@ class CourseController {
     }
 
     delete(req, res, next){
-        
-        Course.deleteOne({ _id: req.params.course_id })
+        Course.delete({ _id: req.params.course_id })
             .then((data) => { res.redirect('/course/manager/list') })
             .catch((err) => next(err));
     }
+    
 }
 
 module.exports = new CourseController;

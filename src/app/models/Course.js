@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
-mongoose.plugin(slug);
-const Schema = mongoose.Schema;
+const mongooseDelete = require('mongoose-delete');
 
+const Schema = mongoose.Schema;
 
 // định nghĩa ra thằng CourseModule
 const Cource = new Schema({
@@ -13,5 +13,8 @@ const Cource = new Schema({
 }, {
     timestamps: true,
 });
+
+mongoose.plugin(slug); // thêm plugin slug name 
+Cource.plugin(mongooseDelete, { deletedAt : true, overrideMethods: true });// thêm plugin soft delete cho models
 
 module.exports = mongoose.model('Cource', Cource); // 2 tham số là tên model và Schema

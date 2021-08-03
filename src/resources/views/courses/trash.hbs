@@ -1,11 +1,8 @@
 <div class="main">
     <nav class="breadcrumb">
         <a class="breadcrumb-item" href="/">Home</a>
-        <a class="breadcrumb-item" >Course list</a>
+        <a class="breadcrumb-item" >Course trashed</a>
     </nav>
-    <div class="trash">
-        <a type="button" class="btn btn-primary" href="/course/manager/trash" style="margin-bottom: 10px; ">Trashed</a>
-    </div>
     <table class="table">
         <thead>
             <tr>
@@ -24,10 +21,10 @@
                 <td>{{this.name}}</td>
                 <td>{{this.descriptions}}</td>
                 <td>
-                    <a href="{{this.slug}}/edit">edit</a>
+                    <a href="/course/manager/trash/restore/{{this._id}}">restore</a>
                 </td>
                 <td>
-                    <a href="delete/{{this._id}}">delete</a>
+                    <a href="/course/manager/trash/remove/{{this._id}}">remove</a>
                 </td>
             </tr>
             {{/each}}
